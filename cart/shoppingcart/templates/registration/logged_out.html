@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid my-5 p-5">
+        <div class="alert alert-success p-5 my-5 d-flex flex-column" role="alert">
+            <h6>Ha cerrado sesión correctamente.</h6>
+            <a href="{% url 'login' %}" class="alert-link align-self-end">Iniciar sesión</a>
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid my-5 p-5">
+        <div class="alert alert-danger p-5 my-5 d-flex flex-column" role="alert">
+            <h6>La reserva no se ha podido realizar correctamente.</h6>
+            <a href="{% url 'booking' %}" class="alert-link align-self-end">Volver</a>
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid p-5 text-center">
+    <h2 class="my-3">Citas Disponibles</h2>
+    <div class="table-responsive my-3">
+       <table class="table table-hover text-center">
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora Inicio</th>
+              <th scope="col">Hora Final</th>
+              <th scope="col">Reservar</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          {% for appointment in appointments %}
+            <tr>
+              <th scope="row">{{ appointment.startDateTime.date }}</th>
+              <td>{{ appointment.startDateTime.time }}</td>
+              <td>{{ appointment.endDateTime.time }}</td>
+              <td>
+                  <a href="{% url 'book' appointment.pk %}" class="btn btn-outline-danger btn-sm">Reservar</a>
+              </td>
+            </tr>
+
+          {% endfor %}
+
+          </tbody>
+        </table>
+    </div>
+
+    <h2 class="my-3">Reservas Realizadas</h2>
+    <div class="table-responsive my-3">
+       <table class="table table-hover text-center">
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora Inicio</th>
+              <th scope="col">Hora Final</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for appointment in user_appointments %}
+            <tr>
+              <th scope="row">{{ appointment.startDateTime.date }}</th>
+              <td>{{ appointment.startDateTime.time }}</td>
+              <td>{{ appointment.endDateTime.time }}</td>
+            </tr>
+
+          {% endfor %}
+
+
+
+          </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

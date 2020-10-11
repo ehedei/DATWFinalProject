@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+
+{% block content %}
+<div id="sign-in-cnt" class="container-fluid bg-light">
+    <form method='POST' class="form-signin text-center py-5">
+       {% csrf_token %}
+      <img class="my-4" src="{% static 'images/bird.png' %}" alt="Out of the Box" height="72">
+      <h2 class="h3 mb-3 font-weight-normal">Por favor, inicie sesión</h2>
+
+      <div class="form-group">
+          {{ form.username.label_tag }}
+          {{ form.username|add_class:'form-control' }}
+      </div>
+      <div class="form-group">
+          {{ form.password.label_tag }}
+          {{ form.password|add_class:'form-control' }}
+      </div>
+
+
+      <button class="btn btn-lg btn-danger btn-block mb-5" type="submit" value="login">Iniciar sesión</button>
+      <input type="hidden" name="next" value="{{ next }}" />
+
+      {% if form.errors %}
+        <div class="alert alert-warning" role="alert">
+            Su nombre de usuario y su contraseña no coinciden. Por favor, intente de nuevo.
+        </div>
+      {% endif %}
+
+    </form>
+
+</div>
+{% endblock %}
