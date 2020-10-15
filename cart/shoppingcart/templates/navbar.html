@@ -12,13 +12,25 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto" id="index-opt">
-      <li class="nav-item">
+      {% if request.path == '/' %}
+        <li class="nav-item active">
+      {% else %}
+        <li class="nav-item">
+      {% endif %}
         <a class="nav-link" href="{% url 'index' %}">Inicio</a>
       </li>
-      <li class="nav-item" id="booking-opt">
+      {% if request.path == '/booking' %}
+        <li class="nav-item active">
+      {% else %}
+        <li class="nav-item">
+      {% endif %}
         <a class="nav-link" href="{% url 'booking' %}">Reservar sesión</a>
       </li>
-      <li class="nav-item" id="contact-opt">
+      {% if request.path == '/contact' %}
+        <li class="nav-item active">
+      {% else %}
+        <li class="nav-item">
+      {% endif %}
         <a class="nav-link" href="{% url 'contact' %}">Contactar</a>
       </li>
     </ul>
@@ -29,10 +41,10 @@
     <div class="d-flex align-items-center my-2 my-lg-0">
       {% if user.is_authenticated %}
         <p class="m-0 text-light">Bienvenid@ <em>{{ user.username }}</em></p>
-        <a href="/accounts/logout/" class="btn btn-outline-warning my-2 my-sm-0 ml-4">Cerrar sesión</a>
+        <a href="{% url 'logout' %}" class="btn btn-outline-warning my-2 my-sm-0 ml-4">Cerrar sesión</a>
       {% else %}
-        <a href="/accounts/login/" class="text-light">Registro</a>
-        <a href="/accounts/login/" class="btn btn-outline-warning my-2 my-sm-0 ml-4">Iniciar sesión</a>
+        <a href="{% url 'signup' %}" class="text-light">Registro</a>
+        <a href="{% url 'login' %}" class="btn btn-outline-warning my-2 my-sm-0 ml-4">Iniciar sesión</a>
       {% endif %}
 
     </div>

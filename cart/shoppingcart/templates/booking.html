@@ -26,6 +26,13 @@
               </td>
             </tr>
 
+          {% empty %}
+            <tr>
+                <td colspan="4">
+                    <em>No hay citas disponibles</em>
+                </td>
+
+            </tr>
           {% endfor %}
 
           </tbody>
@@ -49,6 +56,14 @@
               <td>{{ appointment.startDateTime.time }}</td>
               <td>{{ appointment.endDateTime.time }}</td>
             </tr>
+
+          {% empty %}
+            <tr>
+                <td colspan="3">
+                    <em>No ha realizado ninguna reserva</em>
+                </td>
+            </tr>
+
 
           {% endfor %}
 

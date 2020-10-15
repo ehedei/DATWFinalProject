@@ -115,12 +115,18 @@ main.container-fluid {
 /* Sign-in form
 -------------------------------------------------- */
 
-.form-signin {
+.form-signin, .form-contact, .form-signup {
   width: 100%;
   max-width: 330px;
   padding: 15px;
   margin: auto;
 }
+
+.form-contact, .form-signup {
+  max-width: 600px;
+}
+
+
 .form-signin .checkbox {
   font-weight: 400;
 }
@@ -145,6 +151,6 @@ main.container-fluid {
   border-top-right-radius: 0;
 }
 
-#sign-in-cnt {
+#sign-in-cnt, #contact-cnt {
     min-width: 360px;
 }
