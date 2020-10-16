@@ -108,8 +108,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '/ootb/static/')
 STATICFILES_DIRS = [
-     os.path.join(BASE_DIR, "static"),
-
+     "static",
 ]
 
 AUTH_USER_MODEL = 'shoppingcart.User'
