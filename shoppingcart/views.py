@@ -69,7 +69,6 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            print('es valido, tio')
             user = User()
             user.username = form.cleaned_data['username']
             user.email = form.cleaned_data['email']

@@ -5,6 +5,9 @@ from .models import User
 
 
 class ContactForm(forms.Form):
+    """
+    Formulario de contacto
+    """
     name = forms.CharField(required=True, max_length=50, label='Nombre:')
     email = forms.EmailField(required=True, max_length=50, label='Email:')
     subject = forms.CharField(required=True, max_length=100, label='Asunto:')
@@ -42,10 +45,11 @@ class SignupForm(forms.Form):
     def clean(self):
         cleaned_data = super().clean()
 
-        email = self.cleaned_data.get('email')
-        repeatedEmail = self.cleaned_data.get('repeated_password')
+        password = self.cleaned_data.get('password')
+        repeatedPassword = self.cleaned_data.get('repeated_password')
 
-        if repeatedEmail != email:
+
+        if repeatedPassword != password:
             raise ValidationError('La contraseña no coincide', code='invalid')
         else:
             return cleaned_data
