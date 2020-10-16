@@ -8,7 +8,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '8q+)=%t!p3efx4=n8ix(6zy0(*vqwib=bx6285zq0o62jot-73')
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'sheltered-cove-14432.herokuapp.com/',
+    '127.0.0.1',
+]
 
 
 # Application definition
