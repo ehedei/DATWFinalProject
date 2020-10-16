@@ -5,7 +5,7 @@ from django.utils.timezone import now
 
 
 class User(AbstractUser):
-    birthdate = models.DateField('Fecha de nacimiento', null=False)
+    birthdate = models.DateField('Fecha de nacimiento', null=True)
     phonecallAllowed = models.BooleanField('¿Permite que se le llame por teléfono?', default=True)
     emailContactAllowed = models.BooleanField('¿Permite que nos comuniquemos con usted por email?', default=True)
 
