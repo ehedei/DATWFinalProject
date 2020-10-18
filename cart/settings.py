@@ -9,6 +9,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '8q+)=%t!p3efx4=n8ix(6zy0(*vqwi
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = [
+    'outoftheboxmcr.herokuapp.com',
     'sheltered-cove-14432.herokuapp.com',
     '127.0.0.1',
 ]
