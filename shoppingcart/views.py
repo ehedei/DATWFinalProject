@@ -41,9 +41,9 @@ def booking(request):
     user = User.objects.get(pk=request.user.id)
     tomorrow = datetime.now() + timedelta(days=1)
 
-    appointments = Appointment.objects.filter(user=None, startDateTime__gt = tomorrow.date())
+    appointments = Appointment.objects.filter(user=None, startDateTime__gt = tomorrow.date()).order_by('startDateTime')
 
-    user_appointments = user.appointments.all()
+    user_appointments = user.appointments.all().order_by('-startDateTime')
 
     context = {
         'appointments': appointments,
