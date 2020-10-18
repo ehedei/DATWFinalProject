@@ -1,4 +1,4 @@
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
@@ -41,9 +41,9 @@ def booking(request):
     user = User.objects.get(pk=request.user.id)
     tomorrow = datetime.now() + timedelta(days=1)
 
-    appointments = Appointment.objects.filter(user=None, startDateTime__gt = tomorrow.date()).order_by('startDateTime')
+    appointments = Appointment.objects.filter(user=None, startDateTime__gt=tomorrow.date())
 
-    user_appointments = user.appointments.all().order_by('-startDateTime')
+    user_appointments = user.appointments.all()
 
     context = {
         'appointments': appointments,
@@ -56,7 +56,7 @@ def booking(request):
 def book(request, pk):
     appointment = Appointment.objects.get(pk=pk)
 
-    if appointment.user == None:
+    if appointment.user is None:
         appointment.user = User.objects.get(pk=request.user.id)
         appointment.save()
         return redirect('booking')
@@ -91,4 +91,3 @@ def signup(request):
     }
 
     return render(request, 'registration/signup.html', context)
-

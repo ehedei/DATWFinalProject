@@ -16,12 +16,17 @@ class Appointment(models.Model):
     creationDateTime = models.DateTimeField('Fecha de creación de la cita', null=False, blank=True, default=now)
     bookingDateTime = models.DateTimeField('Fecha de la reserva', null=True, blank=True)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.RESTRICT, related_name='appointments', related_query_name="appointment")
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.RESTRICT,
+        related_name='appointments',
+        related_query_name="appointment")
 
     class Meta:
-        verbose_name: 'Cita'
-        verbose_name_plural: 'Citas'
-        ordering: ['startDateTime']
+        verbose_name = "Cita"
+        verbose_name_plural = "Citas"
+        ordering = ["startDateTime"]
 
     def __str__(self):
         return f'{self.startDateTime} - {self.endDateTime}'
@@ -35,10 +40,9 @@ class Message(models.Model):
     sendDateTime = models.DateTimeField('Fecha de envío del comentario', null=False, default=now)
 
     class Meta:
-        verbose_name: 'Mensaje'
-        verbose_name_plural: 'Mensajes'
-        ordering: ['-sendDateTime']
-
+        verbose_name = "Mensaje"
+        verbose_name_plural = "Mensajes"
+        ordering = ["-sendDateTime"]
 
     def __str__(self):
         return f'{self.name} - {self.subject} - {self.sendDateTime}'
