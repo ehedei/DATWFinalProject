@@ -23,6 +23,9 @@ class Appointment(models.Model):
         verbose_name_plural: 'Citas'
         ordering: ['startDateTime']
 
+    def __str__(self):
+        return f'{self.startDateTime} - {self.endDateTime}'
+
 
 class Message(models.Model):
     text = models.CharField('Mensaje', null=False, blank=False, max_length=500)
@@ -35,3 +38,7 @@ class Message(models.Model):
         verbose_name: 'Mensaje'
         verbose_name_plural: 'Mensajes'
         ordering: ['-sendDateTime']
+
+
+    def __str__(self):
+        return f'{self.name} - {self.subject} - {self.sendDateTime}'
